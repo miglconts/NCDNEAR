@@ -29,6 +29,7 @@ node_modules
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+frontend/.parcel-cache/
 frontend/.parcel-cache/02a720b8dccba606
 frontend/.parcel-cache/081b21d675a52722
 frontend/.parcel-cache/35bbf36d78b8dd8f

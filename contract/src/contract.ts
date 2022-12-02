@@ -1,57 +1,58 @@
-// Find all our documentation at https://docs.near.org
-import { NearBindgen, near, call, view } from 'near-sdk-js';
+import { NearBindgen, assert, UnorderedMap, near, call, view  } from 'near-sdk-js';
+import { ONE_NEAR } from 'near-sdk-js/lib/types';
 
 
-@NearBindgen({})
-class RegistroMov {
+/* @NearBindgen({})
+class Movimiento {
+  id: string;
   nombre: string;
   costo: number;
 
-  //Inicializamos el objeto
-  constructor(nombre: string, costo: number) {
+  constructor(nombre: string, costo: number, id:string) {
     this.nombre = nombre;
     this.costo = costo;
+    this.id = id;
   }
-}
+} */
 
 @NearBindgen({})
-class HelloNear {
-  message: string = "Hello";
+class Finaza {
   saldo: number = 0;
+  /* movimientos: UnorderedMap<Movimiento> = new UnorderedMap<Movimiento>('kille');
 
-  @view({}) // This method is read-only and can be called for free
-  get_greeting(): string {
-    return this.message;
-  }
-  @call({}) // This method changes the state, for which it cost gas
-  set_greeting({ message }: { message: string }): void {
-    near.log(`Saving greeting ${message}`);
-    this.message = message;
+  @call({ payableFunction: true })
+  setMovimiento({ nombre, costo, id  }: { nombre: string, costo: number, id: string }): void {
+    const deposito = near.attachedDeposit();
+    assert(deposito >= ONE_NEAR, "Debes de pagar 1 NEAR para registrarte.");
+    
+    const movimiento = new Movimiento(nombre, costo, id);
+    this.movimientos.set(id, movimiento)
+    near.log("Registro creado exitosamente.");
   }
 
-  @view({}) // This method is read-only and can be called for free
+  @view({})
+  getMovimiento({ id }: { id: string }) {
+    return this.movimientos.get(id);
+  }
+
+  @view({})
+  getMovimientos() {
+    return this.movimientos.toArray();
+  } */
+
+  @view({}) 
   getSaldo(): number {
     return this.saldo;
   }
 
-  @call({}) // This method changes the state, for which it cost gas
-  increaseSaldo({ saldo }: { saldo: number }): void {
-    near.log(`Saving ${saldo}`);
-    this.saldo = this.saldo + saldo;
-  }
-  @call({}) // This method changes the state, for which it cost gas
-  decreaseSaldo({ saldo }: { saldo: number }): void {
-    near.log(`Saving ${saldo}`);
-    this.saldo -= saldo;
-  }
-
-  @call({}) // This method changes the state, for which it cost gas
+  @call({}) 
   mutateSaldo({ resta, suma }: { resta: number, suma : number }): void {
     near.log(`Saving ${resta}, ${suma}`);
     this.saldo -= resta;
     this.saldo += suma;
   }
-  @call({}) // This method changes the state, for which it cost gas
+  
+  @call({}) 
   setZero(){
     this.saldo = 0;
   }

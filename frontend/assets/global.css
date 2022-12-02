@@ -30,9 +30,9 @@ main {
   max-width: 26em;
 }
 
-main.please-wait {
+/* main.please-wait {
 }
-
+ */
 h1 {
   background-image: url(./logo-black.svg);
   background-position: center 1em;

@@ -1,7 +1,3 @@
-DEFINE_NEAR_METHOD(decreaseSaldo)
 DEFINE_NEAR_METHOD(getSaldo)
-DEFINE_NEAR_METHOD(get_greeting)
-DEFINE_NEAR_METHOD(increaseSaldo)
 DEFINE_NEAR_METHOD(mutateSaldo)
 DEFINE_NEAR_METHOD(setZero)
-DEFINE_NEAR_METHOD(set_greeting)

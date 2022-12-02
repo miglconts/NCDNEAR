@@ -550,47 +550,43 @@ function NearBindgen({
   };
 }
 
-var _dec, _class, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _class2, _class3;
-(_dec = NearBindgen({}), _dec(_class = class RegistroMov {
-  //Inicializamos el objeto
-  constructor(nombre, costo) {
+var _dec, _dec2, _dec3, _dec4, _class, _class2;
+/* @NearBindgen({})
+class Movimiento {
+  id: string;
+  nombre: string;
+  costo: number;
+
+  constructor(nombre: string, costo: number, id:string) {
     this.nombre = nombre;
     this.costo = costo;
+    this.id = id;
   }
-}) || _class);
-let HelloNear = (_dec2 = NearBindgen({}), _dec3 = view(), _dec4 = call({}), _dec5 = view(), _dec6 = call({}), _dec7 = call({}), _dec8 = call({}), _dec9 = call({}), _dec2(_class2 = (_class3 = class HelloNear {
-  message = "Hello";
+} */
+let Finaza = (_dec = NearBindgen({}), _dec2 = view(), _dec3 = call({}), _dec4 = call({}), _dec(_class = (_class2 = class Finaza {
   saldo = 0;
-  // This method is read-only and can be called for free
-  get_greeting() {
-    return this.message;
+  /* movimientos: UnorderedMap<Movimiento> = new UnorderedMap<Movimiento>('kille');
+   @call({ payableFunction: true })
+  setMovimiento({ nombre, costo, id  }: { nombre: string, costo: number, id: string }): void {
+    const deposito = near.attachedDeposit();
+    assert(deposito >= ONE_NEAR, "Debes de pagar 1 NEAR para registrarte.");
+    
+    const movimiento = new Movimiento(nombre, costo, id);
+    this.movimientos.set(id, movimiento)
+    near.log("Registro creado exitosamente.");
   }
-  // This method changes the state, for which it cost gas
-  set_greeting({
-    message
-  }) {
-    log(`Saving greeting ${message}`);
-    this.message = message;
+   @view({})
+  getMovimiento({ id }: { id: string }) {
+    return this.movimientos.get(id);
   }
-  // This method is read-only and can be called for free
+   @view({})
+  getMovimientos() {
+    return this.movimientos.toArray();
+  } */
+
   getSaldo() {
     return this.saldo;
   }
-  // This method changes the state, for which it cost gas
-  increaseSaldo({
-    saldo
-  }) {
-    log(`Saving ${saldo}`);
-    this.saldo = this.saldo + saldo;
-  }
-  // This method changes the state, for which it cost gas
-  decreaseSaldo({
-    saldo
-  }) {
-    log(`Saving ${saldo}`);
-    this.saldo -= saldo;
-  }
-  // This method changes the state, for which it cost gas
   mutateSaldo({
     resta,
     suma
@@ -599,107 +595,51 @@ let HelloNear = (_dec2 = NearBindgen({}), _dec3 = view(), _dec4 = call({}), _dec
     this.saldo -= resta;
     this.saldo += suma;
   }
-  // This method changes the state, for which it cost gas
   setZero() {
     this.saldo = 0;
   }
-}, (_applyDecoratedDescriptor(_class3.prototype, "get_greeting", [_dec3], Object.getOwnPropertyDescriptor(_class3.prototype, "get_greeting"), _class3.prototype), _applyDecoratedDescriptor(_class3.prototype, "set_greeting", [_dec4], Object.getOwnPropertyDescriptor(_class3.prototype, "set_greeting"), _class3.prototype), _applyDecoratedDescriptor(_class3.prototype, "getSaldo", [_dec5], Object.getOwnPropertyDescriptor(_class3.prototype, "getSaldo"), _class3.prototype), _applyDecoratedDescriptor(_class3.prototype, "increaseSaldo", [_dec6], Object.getOwnPropertyDescriptor(_class3.prototype, "increaseSaldo"), _class3.prototype), _applyDecoratedDescriptor(_class3.prototype, "decreaseSaldo", [_dec7], Object.getOwnPropertyDescriptor(_class3.prototype, "decreaseSaldo"), _class3.prototype), _applyDecoratedDescriptor(_class3.prototype, "mutateSaldo", [_dec8], Object.getOwnPropertyDescriptor(_class3.prototype, "mutateSaldo"), _class3.prototype), _applyDecoratedDescriptor(_class3.prototype, "setZero", [_dec9], Object.getOwnPropertyDescriptor(_class3.prototype, "setZero"), _class3.prototype)), _class3)) || _class2);
+}, (_applyDecoratedDescriptor(_class2.prototype, "getSaldo", [_dec2], Object.getOwnPropertyDescriptor(_class2.prototype, "getSaldo"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "mutateSaldo", [_dec3], Object.getOwnPropertyDescriptor(_class2.prototype, "mutateSaldo"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setZero", [_dec4], Object.getOwnPropertyDescriptor(_class2.prototype, "setZero"), _class2.prototype)), _class2)) || _class);
 function setZero() {
-  const _state = HelloNear._getState();
-  if (!_state && HelloNear._requireInit()) {
+  const _state = Finaza._getState();
+  if (!_state && Finaza._requireInit()) {
     throw new Error("Contract must be initialized");
   }
-  const _contract = HelloNear._create();
+  const _contract = Finaza._create();
   if (_state) {
-    HelloNear._reconstruct(_contract, _state);
+    Finaza._reconstruct(_contract, _state);
   }
-  const _args = HelloNear._getArgs();
+  const _args = Finaza._getArgs();
   const _result = _contract.setZero(_args);
-  HelloNear._saveToStorage(_contract);
-  if (_result !== undefined) if (_result && _result.constructor && _result.constructor.name === "NearPromise") _result.onReturn();else env.value_return(HelloNear._serialize(_result, true));
+  Finaza._saveToStorage(_contract);
+  if (_result !== undefined) if (_result && _result.constructor && _result.constructor.name === "NearPromise") _result.onReturn();else env.value_return(Finaza._serialize(_result, true));
 }
 function mutateSaldo() {
-  const _state = HelloNear._getState();
-  if (!_state && HelloNear._requireInit()) {
+  const _state = Finaza._getState();
+  if (!_state && Finaza._requireInit()) {
     throw new Error("Contract must be initialized");
   }
-  const _contract = HelloNear._create();
+  const _contract = Finaza._create();
   if (_state) {
-    HelloNear._reconstruct(_contract, _state);
+    Finaza._reconstruct(_contract, _state);
   }
-  const _args = HelloNear._getArgs();
+  const _args = Finaza._getArgs();
   const _result = _contract.mutateSaldo(_args);
-  HelloNear._saveToStorage(_contract);
-  if (_result !== undefined) if (_result && _result.constructor && _result.constructor.name === "NearPromise") _result.onReturn();else env.value_return(HelloNear._serialize(_result, true));
-}
-function decreaseSaldo() {
-  const _state = HelloNear._getState();
-  if (!_state && HelloNear._requireInit()) {
-    throw new Error("Contract must be initialized");
-  }
-  const _contract = HelloNear._create();
-  if (_state) {
-    HelloNear._reconstruct(_contract, _state);
-  }
-  const _args = HelloNear._getArgs();
-  const _result = _contract.decreaseSaldo(_args);
-  HelloNear._saveToStorage(_contract);
-  if (_result !== undefined) if (_result && _result.constructor && _result.constructor.name === "NearPromise") _result.onReturn();else env.value_return(HelloNear._serialize(_result, true));
-}
-function increaseSaldo() {
-  const _state = HelloNear._getState();
-  if (!_state && HelloNear._requireInit()) {
-    throw new Error("Contract must be initialized");
-  }
-  const _contract = HelloNear._create();
-  if (_state) {
-    HelloNear._reconstruct(_contract, _state);
-  }
-  const _args = HelloNear._getArgs();
-  const _result = _contract.increaseSaldo(_args);
-  HelloNear._saveToStorage(_contract);
-  if (_result !== undefined) if (_result && _result.constructor && _result.constructor.name === "NearPromise") _result.onReturn();else env.value_return(HelloNear._serialize(_result, true));
+  Finaza._saveToStorage(_contract);
+  if (_result !== undefined) if (_result && _result.constructor && _result.constructor.name === "NearPromise") _result.onReturn();else env.value_return(Finaza._serialize(_result, true));
 }
 function getSaldo() {
-  const _state = HelloNear._getState();
-  if (!_state && HelloNear._requireInit()) {
+  const _state = Finaza._getState();
+  if (!_state && Finaza._requireInit()) {
     throw new Error("Contract must be initialized");
   }
-  const _contract = HelloNear._create();
+  const _contract = Finaza._create();
   if (_state) {
-    HelloNear._reconstruct(_contract, _state);
+    Finaza._reconstruct(_contract, _state);
   }
-  const _args = HelloNear._getArgs();
+  const _args = Finaza._getArgs();
   const _result = _contract.getSaldo(_args);
-  if (_result !== undefined) if (_result && _result.constructor && _result.constructor.name === "NearPromise") _result.onReturn();else env.value_return(HelloNear._serialize(_result, true));
-}
-function set_greeting() {
-  const _state = HelloNear._getState();
-  if (!_state && HelloNear._requireInit()) {
-    throw new Error("Contract must be initialized");
-  }
-  const _contract = HelloNear._create();
-  if (_state) {
-    HelloNear._reconstruct(_contract, _state);
-  }
-  const _args = HelloNear._getArgs();
-  const _result = _contract.set_greeting(_args);
-  HelloNear._saveToStorage(_contract);
-  if (_result !== undefined) if (_result && _result.constructor && _result.constructor.name === "NearPromise") _result.onReturn();else env.value_return(HelloNear._serialize(_result, true));
-}
-function get_greeting() {
-  const _state = HelloNear._getState();
-  if (!_state && HelloNear._requireInit()) {
-    throw new Error("Contract must be initialized");
-  }
-  const _contract = HelloNear._create();
-  if (_state) {
-    HelloNear._reconstruct(_contract, _state);
-  }
-  const _args = HelloNear._getArgs();
-  const _result = _contract.get_greeting(_args);
-  if (_result !== undefined) if (_result && _result.constructor && _result.constructor.name === "NearPromise") _result.onReturn();else env.value_return(HelloNear._serialize(_result, true));
+  if (_result !== undefined) if (_result && _result.constructor && _result.constructor.name === "NearPromise") _result.onReturn();else env.value_return(Finaza._serialize(_result, true));
 }
 
-export { decreaseSaldo, getSaldo, get_greeting, increaseSaldo, mutateSaldo, setZero, set_greeting };
+export { getSaldo, mutateSaldo, setZero };
 //# sourceMappingURL=hello_near.js.map

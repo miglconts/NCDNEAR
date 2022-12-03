@@ -4,7 +4,8 @@ export function SignInPrompt({ greeting, onClick }) {
   return (
     <main>
       <h1>
-        The contract says: <span className="greeting">{greeting}</span>
+        Actualmente tienes: $: <span className="greeting">{greeting}</span>{" "}
+        Disponible
       </h1>
       <p style={{ textAlign: "center" }}>
         <button onClick={onClick}>Sign in with NEAR Wallet</button>
